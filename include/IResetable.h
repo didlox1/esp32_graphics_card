@@ -1,3 +1,5 @@
+#pragma once
+
 class IResetable{
 public:
     virtual ~IResetable() = default;

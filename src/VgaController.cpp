@@ -1,5 +1,9 @@
 #include "VgaController.h"
 
+VgaController::VgaController() {
+    reset();
+}
+
 void VgaController::evaluate() {
     //Evaluate all the booleans and calculate outputs
     hSync = !(x < H_SYNC_PULSE);
@@ -33,12 +37,32 @@ void VgaController::commit() {
         blueOut = 0;
     }
 
-    //Calculate memory address
-    int pixelX = x - (H_SYNC_PULSE + H_FRONT_PORCH);
-    int pixelY = y - (V_SYNC_PULSE + V_FRONT_PORCH);
+    //Calculate memory address - think about negative coordinates
+    pixelX = x - (H_SYNC_PULSE + H_FRONT_PORCH);
+    pixelY = y - (V_SYNC_PULSE + V_FRONT_PORCH);
     address.first = pixelY;
     address.second = pixelX;
 }
-void print(){
+void VgaController::print(){
     //TODO: Implement print function
+    std::cout << std::format("VGA Controller State: X: {}, Y: {}    HSync: {}, VSync: {}    Red: {}, Green: {}, Blue: {}    Address: ({}, {})\n",
+        x, y, hSync, vSync, redOut.to_ulong(), greenOut.to_ulong(), blueOut.to_ulong(), address.first, address.second);
+}
+
+void VgaController::reset() {
+    //Reset all counters and outputs
+    x = 0;
+    y = 0;
+    pixelX = 0;
+    pixelY = 0;
+    videoEnable = false;
+    doneLine = false;
+    doneFrame = false;
+    dataIn = 0;
+    redOut = 0;
+    greenOut = 0;
+    blueOut = 0;
+    hSync = true; //Active low
+    vSync = true; //Active low
+    address = {0, 0};
 }
