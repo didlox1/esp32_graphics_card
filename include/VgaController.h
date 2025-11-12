@@ -53,5 +53,4 @@ public:
     void commit() override;
     void reset() override;
     void print() override;
-    friend std::ostream& operator<<(std::ostream& os, const VgaController& vga);
 };

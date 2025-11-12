@@ -66,9 +66,3 @@ void VgaController::reset() {
     vSync = true; //Active low
     address = {0, 0};
 }
-
-std::ostream& operator<<(std::ostream& os, const VgaController& vga) {
-    os << std::format("VGA Controller State: X: {}, Y: {}    HSync: {}, VSync: {}    Red: {}, Green: {}, Blue: {}    Address: ({}, {})",
-        vga.x, vga.y, vga.hSync, vga.vSync, vga.redOut.to_ulong(), vga.greenOut.to_ulong(), vga.blueOut.to_ulong(), vga.address.first, vga.address.second);
-    return os;
-}
