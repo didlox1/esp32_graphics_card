@@ -1,10 +1,6 @@
 // Top module file
-#include "VgaController.h"
-#include "Clock.h"
+#include "Testbench.h"
 int main() {
-    VgaController vgaController;
-    Clock clock;
-    clock.addVgaController(vgaController);
-    clock.tick(1000);
+    Testbench::getInstance().run();
     return 0;
 }

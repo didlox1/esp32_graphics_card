@@ -39,8 +39,10 @@ add_executable(${PROJECT_NAME}
     "include/IResetable.h"
     "include/ITickable.h" 
     "include/VgaController.h"
+    "include/Testbench.h"
     #in /src folder
     "src/VgaController.cpp"
+    "src/Testbench.cpp"
     )
 
 # Specify include directories for header files
