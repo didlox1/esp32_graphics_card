@@ -40,8 +40,10 @@ add_executable(${PROJECT_NAME}
     "include/ITickable.h" 
     "include/VgaController.h"
     "include/Testbench.h"
+    "include/Vram.h"
     #in /src folder
     "src/VgaController.cpp"
+    "src/Vram.cpp"
     "src/Testbench.cpp"
     )
 
